@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <title>Title Cry-ZA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: black;
+            color: white;
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            height: 8936px;
+            background-image: url('./images/jeremy-bishop-rqWoB4LFgmc-unsplash 2.png');
+            background-repeat: no-repeat;
+            background-position: center 0;
+            background-size: cover;
+            font-family: 'Archivo Black', sans-serif;
+            border: 0px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            color: white;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 210px;
+            font-weight: 400;
+            line-height: 210px;
+            letter-spacing: -12px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 70px;
+            margin-top: 52px;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            right: 0;
+            border: 6px solid white;
+        }
+
+        .sub-header {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 72px;
+            width: 50%;
+            margin-bottom: 50vh;
+        }
+
+        .link {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 37px;
+
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            text-decoration: none;
+
+            color: #F5F5F5;
+
+            opacity: 0.8;
+
+            /* Inside auto layout */
+
+            flex: none;
+            order: 0;
+            flex-grow: 0;
+        }
+
+        .layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .controls {
+            position: sticky;
+            width: 100%;
+            bottom: 45px;
+            margin-bottom: 45px;
+        }
+
+        .button {
+            background: none;
+            border: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 7px 11px;
+            gap: 10px;
+            border-radius: 30px;
+        }
+
+        .button__text {
+            font-family: 'Inter', sans-serif;
+
+            font-style: normal;
+            font-weight: 900;
+            font-size: 12px;
+            line-height: 100%;
+
+            text-transform: uppercase;
+            padding: 14px 0px 10px 10px;
+        }
+
+        .button__icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .button__icon::before {
+            content: '';
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: center;
+        }
+
+        .icon_opensea::before {
+            background-image: url('./images/opensea.svg');
+            width: 14px;
+            height: 14px;
+        }
+
+        .icon_play::before {
+            background-image: url('./images/play.svg');
+            width: 8px;
+            height: 10px;
+        }
+
+        .button_black {
+            background-color: black;
+        }
+
+        .button_black .button__icon {
+            background-color: white;
+        }
+
+        .button_black .button__icon::before {
+            background-position-y: 0;
+        }
+
+        .button_black .button__text {
+            color: white;
+        }
+
+        .button_white {
+            background-color: white;
+        }
+
+        .button_white .button__icon {
+            background-color: black;
+        }
+
+        .button_white .button__icon::before {
+            background-position-y: 100%;
+        }
+
+        .button_white .button__text {
+            color: black;
+        }
+
+        .button_transparent {
+            background: rgba(217, 217, 217, 0.01);
+            /* button black glass */
+
+            box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25), inset 2px -1px 4px -3px rgba(255, 255, 255, 0.21), inset 1px 1px 2px rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(4px);
+            /* Note: backdrop-filter has minimal browser support */
+
+            border-radius: 57px;
+        }
+
+        .button_transparent .button__icon {
+            background-color: black;
+        }
+
+        .button_transparent .button__icon::before {
+            background-position-y: 100%;
+        }
+
+        .button_transparent .button__text {
+            color: white;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading"></div>
+    <div class="container-3d"></div>
+    <div class="content">
+        <div class="layout">
+            <div class="top-bar">
+                <div class="top-bar__left">
+                    <button class="button button_transparent">
+                        <span class="button__text">Play Trailer</span>
+                        <i class="button__icon icon_play"></i>
+                    </button>
+                </div>
+                <div class="top-bar__right">
+
+                    <button class="button button_transparent">
+                        <span class="button__text">View on OpenSea</span>
+                        <i class="button__icon icon_opensea"></i>
+                    </button>
+
+                </div>
+            </div>
+            <h1 class="header">CRYPTOSAURS</h1>
+            <div class="sub-header">
+                <a href="#" class="link" style="flex-basis: 30%;">Dive into metaverse with our fashion avatar</a>
+                <a href="#" class="link" style="flex-basis: 24%;">Visit partner's website: OPensea</a>
+            </div>
+            <div class="controls">
+                <button class="button button_black">
+                    <span class="button__text">View on OpenSea</span>
+                    <i class="button__icon icon_opensea"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import {
+            Scene, PerspectiveCamera, WebGLRenderer, Box3, Vector3, MeshStandardMaterial,
+            AmbientLight, DirectionalLight,
+            AnimationMixer, Clock, ACESFilmicToneMapping, sRGBEncoding,
+            PMREMGenerator, UnsignedByteType
+        } from 'https://cdn.skypack.dev/three@0.136.0';
+        import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
+        import { DRACOLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/DRACOLoader.js';
+        import { RGBELoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/RGBELoader.js';
+
+        const loader = new GLTFLoader();
+
+        const loading = document.querySelector('.loading');
+        // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/');
+        loader.setDRACOLoader(dracoLoader)
+        var obj = [];
+        var camera;
+        new RGBELoader()
+            .load('./gl/studio.hdr', function (texture) {
+                var pmremGenerator = new PMREMGenerator(renderer);
+                pmremGenerator.compileEquirectangularShader();
+
+                var envMap = pmremGenerator.fromEquirectangular(texture).texture;
+
+                // scene.background = envMap;
+                scene.environment = envMap;
+
+                texture.dispose();
+                pmremGenerator.dispose();
+
+                loader.load('./gl/test animation 2 bake.glb', function (gltf) {
+                    console.log('loaded', gltf)
+                    obj.push(gltf.scene);
+                    loading.remove();
+                    [camera] = gltf.cameras;
+                    camera.aspect = window.innerWidth / window.innerHeight
+                    camera.updateProjectionMatrix()
+
+                    const animations = {};
+                    [animations.camera, animations.walk] = gltf.animations;
+                    const globalMixer = new AnimationMixer(gltf.scene);
+                    globalMixer.clipAction(animations.walk).play()
+
+                    // globalMixer.clipAction(animations["1"]).play();
+
+                    const cameraMixer = new AnimationMixer(gltf.scene);
+                    cameraMixer.clipAction(animations.camera).play();
+
+                    function onScroll() {
+                        const cameraAnimation = animations.camera;
+                        const durationInSec = cameraAnimation.duration;
+
+                        const height = document.body.scrollHeight - window.innerHeight;
+                        const currentPos = window.scrollY;
+
+                        const currentTimeInSec = currentPos * durationInSec / height;
+                        cameraMixer.setTime(currentTimeInSec)
+                    }
+                    scene.add(gltf.scene);
+                    window.addEventListener('scroll', onScroll);
+                    onScroll();
+
+                    var clock = new Clock();
+                    function animate() {
+                        requestAnimationFrame(animate);
+                        if (globalMixer) {
+                            const delta = clock.getDelta();
+                            globalMixer.update(delta);
+                        }
+                        if (camera) {
+                            renderer.render(scene, camera);
+                        }
+                    }
+                    animate();
+                }, function (xhr) {
+                    // progress
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+                    loading.innerHTML = `${(xhr.loaded / xhr.total * 100).toFixed(2)}% loaded`;
+                }, function (error) {
+                    console.error(error);
+                    var pre = document.querySelector('.error');
+                    pre.innerHTML += error;
+                });
+            });
+
+        const scene = new Scene();
+        // const camera = new PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 8500);
+        // camera.position.set(0, 1, 5);
+
+        const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setClearColor(0x000000, 0);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        window.addEventListener('resize', () => {
+            if (camera) {
+                camera.aspect = window.innerWidth / window.innerHeight
+                camera.updateProjectionMatrix()
+                renderer.setSize(window.innerWidth, window.innerHeight)
+                renderer.render(scene, camera);
+            }
+        });
+
+        document.querySelector('.container-3d').appendChild(renderer.domElement);    
+    </script>
+</body>
+
+</html>
