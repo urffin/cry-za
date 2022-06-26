@@ -150,7 +150,13 @@
             border-radius: 50%;
         }
 
-        .button__icon::before {
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon::before {
             content: '';
 
             background-repeat: no-repeat;
@@ -169,6 +175,17 @@
             width: 8px;
             height: 10px;
         }
+
+        .icon_discord::before {
+            background-image: url('./images/discord.svg');
+            width: 28px;
+            height: 22px;
+        }
+        .icon_twitter::before {
+            background-image: url('./images/twitter.svg');
+            width: 28px;
+            height: 22px;
+        }        
 
         .button_black {
             background-color: black;
@@ -225,10 +242,31 @@
             color: white;
         }
 
+        .social-buttons {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .social-buttons_white .social-buttons__icon::before{
+            background-position-y: 100%;
+        }
+        .social-buttons_black .social-buttons__icon::before{
+            background-position-y: 0;
+        }
+        .social-buttons__icon {
+            height: 22px;
+        }
+
         .top-bar {
             display: flex;
             justify-content: space-between;
             padding-top: 48px;
+        }
+
+        .top-bar__right {
+            display: flex;
+            gap: 60px;
         }
     </style>
 </head>
@@ -242,14 +280,17 @@
                 <div class="top-bar__left">
                     <button class="button button_transparent">
                         <span class="button__text">Play Trailer</span>
-                        <i class="button__icon icon_play"></i>
+                        <i class="button__icon icon icon_play"></i>
                     </button>
                 </div>
                 <div class="top-bar__right">
-
+                    <div class="social-buttons social-buttons_white">
+                        <i class="social-buttons__icon icon icon_discord"></i>
+                        <i class="social-buttons__icon icon icon_twitter"></i>
+                    </div>
                     <button class="button button_transparent">
                         <span class="button__text">View on OpenSea</span>
-                        <i class="button__icon icon_opensea"></i>
+                        <i class="button__icon icon icon_opensea"></i>
                     </button>
 
                 </div>
@@ -262,7 +303,7 @@
             <div class="controls">
                 <button class="button button_black">
                     <span class="button__text">View on OpenSea</span>
-                    <i class="button__icon icon_opensea"></i>
+                    <i class="button__icon icon icon_opensea"></i>
                 </button>
             </div>
         </div>
