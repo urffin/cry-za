@@ -1,0 +1,9 @@
+<svg width="10" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon">
+            <path d="M10 1.35447L8.64553 0L5.0048 3.64073L1.35447 0L0 1.35447L3.64073 5.0048L0 8.64553L1.35447 10L5.0048 6.35927L8.64553 10L10 8.64553L6.35927 5.0048L10 1.35447Z"/>
+        </symbol>
+    </defs>
+    <use xlink:href="#icon" x="0" y="0" fill="black" />
+    <use xlink:href="#icon" x="0" y="10" fill="white" />
+</svg>

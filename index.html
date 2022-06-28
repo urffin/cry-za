@@ -256,6 +256,12 @@
             height: 33px;
         }
 
+        .icon_cross::before {
+            background-image: url('./images/cross.svg');
+            width: 10px;
+            height: 10px;
+        }
+
         .button_transparent {
             background: rgba(217, 217, 217, 0.01);
             /* button black glass */
@@ -466,7 +472,27 @@
             backdrop-filter: blur(8px);
             /* Note: backdrop-filter has minimal browser support */
 
+            z-index: 1;
             overflow-y: auto;
+            padding: 50px;
+        }
+
+        .sidebar__header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sidebar__text {
+            font-family: 'Archivo Black';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 100%;
+            /* or 20px */
+
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
         }
 
         .theme_dark .sidebar {
@@ -475,9 +501,21 @@
             filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
         }
 
+        .theme_dark .sidebar__text {
+            color: #000000;
+        }
+
         .theme_light .sidebar {
             background: linear-gradient(176.09deg, rgba(0, 0, 0, 0.93) 4.42%, rgba(0, 0, 0, 0.75) 28.76%, rgba(0, 0, 0, 0.85) 49.27%, rgba(0, 0, 0, 0.85) 72.98%, rgba(0, 0, 0, 0.88) 87.05%, #000000 98.55%);
             box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25), inset 4px 4px 8px rgba(255, 255, 255, 0.25), inset -4px -4px 8px -3px rgba(0, 0, 0, 0.24);
+        }
+
+        .theme_light .sidebar__text {
+            color: white;
+        }
+
+        .clear-paddings {
+            padding: 0;
         }
     </style>
 </head>
@@ -539,7 +577,13 @@
             </div>
         </div>
         <aside class="sidebar">
-            <ul class="roadmap">
+            <div class="sidebar__header">
+                <span class="sidebar__text">our road map</span>
+                <button class="button button_round clear-paddings">
+                    <i class="button__icon icon icon_cross"></i>
+                </button>
+            </div>
+            <ul class=" roadmap">
                 <li>1</li>
             </ul>
         </aside>
