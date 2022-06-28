@@ -104,8 +104,6 @@
             text-transform: uppercase;
             text-decoration: none;
 
-            color: #F5F5F5;
-
             opacity: 0.8;
 
             /* Inside auto layout */
@@ -115,10 +113,15 @@
             flex-grow: 0;
         }
 
-        .text-button {
-            background: none;
-            border: 0;
+        .theme_dark .link {
+            color: #F5F5F5;
+        }
 
+        .theme_light .link {
+            color: black;
+        }
+
+        .text-button {
             font-family: 'Helvetica';
             font-style: normal;
             font-weight: 700;
@@ -128,15 +131,18 @@
 
             text-transform: uppercase;
 
-            /* grey */
-
-            color: #9E9E9E;
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
             padding: 0px;
             gap: 78px;
+        }
+
+        .theme_dark .text-button {
+            /* grey */
+            color: #9E9E9E;
+        }
+
+        .theme_light .text-button {
+            /* grey */
+            color: black;
         }
 
         .text-button:hover,
@@ -168,13 +174,16 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 10px;
-            border-radius: 30px;
 
             box-sizing: border-box;
 
-            padding: 9px 10px 7px 20px;
+        }
 
+        .button_with-icon {
+            gap: 10px;
+            border-radius: 30px;
+
+            padding: 9px 10px 7px 20px;
         }
 
         .button__text {
@@ -247,42 +256,6 @@
             height: 33px;
         }
 
-        .theme_dark .button:hover {
-            background-color: black;
-
-            box-shadow: none;
-            backdrop-filter: none;
-            /* Note: backdrop-filter has minimal browser support */
-        }
-
-        .theme_dark .button:hover .button__icon {
-            background-color: white;
-        }
-
-        .theme_dark .button:hover .button__icon::before {
-            background-position-y: 0;
-        }
-
-        .theme_dark .button:hover .button__text {
-            color: white;
-        }
-
-        .theme_light .button:hover {
-            background-color: white;
-        }
-
-        .theme_light .button:hover .button__icon {
-            background-color: black;
-        }
-
-        .theme_light .button:hover .button__icon::before {
-            background-position-y: 100%;
-        }
-
-        .theme_light .button:hover .button__text {
-            color: black;
-        }
-
         .button_transparent {
             background: rgba(217, 217, 217, 0.01);
             /* button black glass */
@@ -302,38 +275,70 @@
             background-position-y: 100%;
         }
 
+        .button_transparent:hover {
+            box-shadow: none;
+            backdrop-filter: none;
+            /* Note: backdrop-filter has minimal browser support */
+        }
+
+        .theme_dark .button_transparent:hover {
+            background-color: white;
+        }
+
         .theme_dark .button_transparent .button__text {
             color: white;
         }
+
+        .theme_dark .button_transparent:hover .button__text {
+            color: black;
+        }
+
         .theme_light .button_transparent .button__text {
             color: black;
         }
 
-        .button_round {
-            padding: 8px;
+        .theme_light .button_transparent:hover {
+            background-color: black;
+        }
+
+        .theme_light .button_transparent:hover .button__text {
+            color: white;
+        }
+
+        .theme_light .button_transparent:hover .button__icon {
+            background-color: white;
+        }
+
+        .theme_light .button_transparent:hover .button__icon::before {
+            background-position-y: 0;
         }
 
         .button_switch {
             padding: 16px 38px;
+            border-radius: 30px;
         }
 
-        .theme_dark .button_switch {
+        .button_switch {
             background-color: black;
             border: 1px solid black;
         }
 
-        .theme_dark .button_switch .button__text {
+        .button_switch .button__text {
             color: white;
         }
 
-        .theme_dark .button_switch:hover .button__text {
+        .button_switch:hover .button__text {
             color: black;
         }
 
-        .theme_dark .button_switch:hover {
+        .button_switch:hover {
             background-color: white;
         }
 
+        .button_round {
+            padding: 8px;
+            border-radius: 50%;
+        }
 
         .theme_dark .button_round {
             background-color: black;
@@ -351,8 +356,12 @@
             background-color: white;
         }
 
-        .theme_dark .button_round .button__icon::before {
-            color: black;
+        .theme_dark .button_round:hover .button__icon {
+            background-color: white;
+        }
+
+        .theme_dark .button_round:hover .button__icon::before {
+            background-position-y: 0;
         }
 
         .theme_light .button_round {
@@ -371,8 +380,12 @@
             background-color: black;
         }
 
-        .theme_light .button_round .button__icon::before {
-            color: white;
+        .theme_light .button_round:hover .button__icon {
+            background-color: black;
+        }
+
+        .theme_light .button_round:hover .button__icon::before {
+            background-position-y: 100%;
         }
 
         .social-buttons {
@@ -444,6 +457,28 @@
             width: 23px;
             border-bottom: 3px dotted;
         }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            backdrop-filter: blur(8px);
+            /* Note: backdrop-filter has minimal browser support */
+
+            overflow-y: auto;
+        }
+
+        .theme_dark .sidebar {
+            background: linear-gradient(89.43deg, rgba(211, 212, 212, 0.2) -4.92%, rgba(211, 212, 212, 0.61) 54.52%, rgba(255, 255, 255, 0.475572) 86.92%, rgba(253, 254, 254, 0.459061) 88.55%, rgba(211, 212, 212, 0) 163.27%);
+            box-shadow: inset 4px 4px 8px rgba(255, 255, 255, 0.25), inset -4px -4px 8px -3px rgba(0, 0, 0, 0.24);
+            filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+
+        .theme_light .sidebar {
+            background: linear-gradient(176.09deg, rgba(0, 0, 0, 0.93) 4.42%, rgba(0, 0, 0, 0.75) 28.76%, rgba(0, 0, 0, 0.85) 49.27%, rgba(0, 0, 0, 0.85) 72.98%, rgba(0, 0, 0, 0.88) 87.05%, #000000 98.55%);
+            box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25), inset 4px 4px 8px rgba(255, 255, 255, 0.25), inset -4px -4px 8px -3px rgba(0, 0, 0, 0.24);
+        }
     </style>
 </head>
 
@@ -454,7 +489,7 @@
         <div class="layout">
             <div class="top-bar">
                 <div class="top-bar__left">
-                    <button class="button button_transparent">
+                    <button class="button button_with-icon button_transparent">
                         <span class="button__text">Play Trailer</span>
                         <i class="button__icon icon icon_play"></i>
                     </button>
@@ -464,7 +499,7 @@
                         <i class="social-buttons__icon icon icon_discord"></i>
                         <i class="social-buttons__icon icon icon_twitter"></i>
                     </div>
-                    <button class="button button_transparent">
+                    <button class="button button_with-icon button_transparent">
                         <span class="button__text">View on OpenSea</span>
                         <i class="button__icon icon icon_opensea"></i>
                     </button>
@@ -479,7 +514,7 @@
             <div class="content__gap"></div>
             <div class="controls">
                 <div class="controls__left">
-                    <button class="button button_transparent">
+                    <button class="button button_with-icon button_transparent">
                         <span class="button__text">our road map</span>
                         <i class="button__icon icon icon_roadmap"></i>
                     </button>
@@ -496,13 +531,18 @@
                     <span class="text button__text">to switch</span>
                 </div>
                 <div class="controls__right">
-                    <button class="text-button" type="button">
+                    <button class="button text-button" type="button">
                         <span>Cryptosaurs Index</span>
                         <span class="dotted"></span>
                     </button>
                 </div>
             </div>
         </div>
+        <aside class="sidebar">
+            <ul class="roadmap">
+                <li>1</li>
+            </ul>
+        </aside>
     </div>
     <script>
         const themes = {
