@@ -18,13 +18,15 @@
             position: fixed;
             top: 0;
             left: 0;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .loading {
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1;
+            z-index: 2;
             background-color: black;
             color: white;
             width: 100vw;
@@ -41,12 +43,14 @@
             background-repeat: no-repeat;
             background-position: center 0;
             background-size: cover;
-            font-family: 'Archivo Black', sans-serif;
             border: 0px;
 
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+        .content__gap {
+            flex-grow: 1;
         }
 
         .header {
@@ -60,6 +64,7 @@
             position: relative;
             margin-bottom: 70px;
             margin-top: 52px;
+            mix-blend-mode: exclusion;
         }
 
         .header::after {
@@ -109,10 +114,14 @@
             flex-direction: column;
             min-height: 100vh;
             position: relative;
+            flex-grow: 1;
         }
 
         .controls {
             position: sticky;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1;
             width: 100%;
             bottom: 45px;
             margin-bottom: 45px;
@@ -124,9 +133,13 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding: 7px 11px;
             gap: 10px;
             border-radius: 30px;
+
+            box-sizing: border-box;
+
+            padding: 9px 10px 7px 20px;
+
         }
 
         .button__text {
@@ -138,7 +151,6 @@
             line-height: 100%;
 
             text-transform: uppercase;
-            padding: 14px 0px 10px 10px;
         }
 
         .button__icon {
@@ -181,41 +193,58 @@
             width: 28px;
             height: 22px;
         }
+
         .icon_twitter::before {
             background-image: url('./images/twitter.svg');
             width: 28px;
             height: 22px;
-        }        
-
-        .button_black {
-            background-color: black;
         }
 
-        .button_black .button__icon {
+        .icon_roadmap::before {
+            background-image: url('./images/roadmap.svg');
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon_skull::before {
+            background-image: url('./images/skull.svg');
+            width: 33px;
+            height: 33px;
+        }
+
+        .theme_dark .button:hover {
+            background-color: black;
+
+            box-shadow: none;
+            backdrop-filter: none;
+            /* Note: backdrop-filter has minimal browser support */
+        }
+
+        .theme_dark .button:hover .button__icon {
             background-color: white;
         }
 
-        .button_black .button__icon::before {
+        .theme_dark .button:hover .button__icon::before {
             background-position-y: 0;
         }
 
-        .button_black .button__text {
+        .theme_dark .button:hover .button__text {
             color: white;
         }
 
-        .button_white {
+        .theme_light .button:hover {
             background-color: white;
         }
 
-        .button_white .button__icon {
+        .theme_light .button:hover .button__icon {
             background-color: black;
         }
 
-        .button_white .button__icon::before {
+        .theme_light .button:hover .button__icon::before {
             background-position-y: 100%;
         }
 
-        .button_white .button__text {
+        .theme_light .button:hover .button__text {
             color: black;
         }
 
@@ -242,18 +271,72 @@
             color: white;
         }
 
+        .button_round {
+            padding: 8px;
+        }
+
+        .theme_dark .button_round {
+            background-color: black;
+        }
+
+        .theme_dark .button_round .button__icon {
+            background-color: black;
+        }
+
+        .theme_dark .button_round .button__icon::before {
+            background-position-y: 100%;
+        }
+
+        .theme_dark .button_round:hover {
+            background-color: white;
+        }
+
+        .theme_dark .button_round .button__icon::before {
+            color: black;
+        }
+
+        .theme_light .button_round {
+            background-color: white;
+        }
+
+        .theme_light .button_round .button__icon {
+            background-color: white;
+        }
+
+        .theme_light .button_round .button__icon::before {
+            background-position-y: 0;
+        }
+
+        .theme_light .button_round:hover {
+            background-color: black;
+        }
+
+        .theme_light .button_round .button__icon::before {
+            color: white;
+        }
+
         .social-buttons {
             display: flex;
             align-items: center;
             gap: 25px;
         }
 
-        .social-buttons_white .social-buttons__icon::before{
+        .theme_dark .social-buttons .social-buttons__icon::before {
             background-position-y: 100%;
         }
-        .social-buttons_black .social-buttons__icon::before{
+
+        .theme_light .social-buttons .social-buttons__icon::before {
             background-position-y: 0;
         }
+
+        .theme_dark .social-buttons .social-buttons__icon:hover::before {
+            background-position-y: 0;
+        }
+
+        .theme_light .social-buttons .social-buttons__icon:hover::before {
+            background-position-y: 100%;
+        }
+
         .social-buttons__icon {
             height: 22px;
         }
@@ -262,16 +345,32 @@
             display: flex;
             justify-content: space-between;
             padding-top: 48px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
 
         .top-bar__right {
             display: flex;
             gap: 60px;
         }
+
+        .controls__left {
+            display: flex;
+            gap: 20px;
+        }
+
+        .controls__center {
+            display: flex;
+            align-items: center;
+
+            padding: 0px;
+            gap: 28px;
+        }
     </style>
 </head>
 
-<body>
+<body class="theme_dark">
     <div class="loading"></div>
     <div class="container-3d"></div>
     <div class="content">
@@ -300,11 +399,26 @@
                 <a href="#" class="link" style="flex-basis: 30%;">Dive into metaverse with our fashion avatar</a>
                 <a href="#" class="link" style="flex-basis: 24%;">Visit partner's website: OPensea</a>
             </div>
+            <div class="content__gap"></div>
             <div class="controls">
-                <button class="button button_black">
-                    <span class="button__text">View on OpenSea</span>
-                    <i class="button__icon icon icon_opensea"></i>
-                </button>
+                <div class="controls__left">
+                    <button class="button button_transparent">
+                        <span class="button__text">our road map</span>
+                        <i class="button__icon icon icon_roadmap"></i>
+                    </button>
+
+                    <button class="button button_round ">
+                        <i class="button__icon icon icon_skull"></i>
+                    </button>
+                </div>
+                <div class="controls__center">
+                    <span class="button__text">press</span>
+                    <button class="button">
+                        <span class="button__text">our road map</span>
+                    </button>
+                    <span class="button__text">to switch</span>
+                </div>
+                <div class="controls__right"></div>
             </div>
         </div>
     </div>
@@ -341,18 +455,19 @@
                 texture.dispose();
                 pmremGenerator.dispose();
 
-                loader.load('./gl/test animation 2 bake.glb', function (gltf) {
+                loader.load('./gl/camera test.glb', function (gltf) {
                     console.log('loaded', gltf)
                     obj.push(gltf.scene);
                     loading.remove();
                     [camera] = gltf.cameras;
-                    camera.aspect = window.innerWidth / window.innerHeight
-                    camera.updateProjectionMatrix()
+                    window.cam = camera;
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
 
                     const animations = {};
                     [animations.camera, animations.walk] = gltf.animations;
                     const globalMixer = new AnimationMixer(gltf.scene);
-                    globalMixer.clipAction(animations.walk).play()
+                    // globalMixer.clipAction(animations.walk).play()
 
                     // globalMixer.clipAction(animations["1"]).play();
 
