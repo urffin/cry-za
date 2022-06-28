@@ -50,6 +50,11 @@
             align-items: center;
         }
 
+        .theme_light .content {
+            background-blend-mode: exclusion;
+            background-color: white;
+        }
+
         .content__gap {
             flex-grow: 1;
         }
@@ -108,6 +113,35 @@
             flex: none;
             order: 0;
             flex-grow: 0;
+        }
+
+        .text-button {
+            background: none;
+            border: 0;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 10px;
+            /* identical to box height, or 83% */
+
+            text-transform: uppercase;
+
+            /* grey */
+
+            color: #9E9E9E;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px;
+            gap: 78px;
+        }
+
+        .text-button:hover,
+        .button:hover {
+            cursor: pointer;
         }
 
         .layout {
@@ -268,13 +302,38 @@
             background-position-y: 100%;
         }
 
-        .button_transparent .button__text {
+        .theme_dark .button_transparent .button__text {
             color: white;
+        }
+        .theme_light .button_transparent .button__text {
+            color: black;
         }
 
         .button_round {
             padding: 8px;
         }
+
+        .button_switch {
+            padding: 16px 38px;
+        }
+
+        .theme_dark .button_switch {
+            background-color: black;
+            border: 1px solid black;
+        }
+
+        .theme_dark .button_switch .button__text {
+            color: white;
+        }
+
+        .theme_dark .button_switch:hover .button__text {
+            color: black;
+        }
+
+        .theme_dark .button_switch:hover {
+            background-color: white;
+        }
+
 
         .theme_dark .button_round {
             background-color: black;
@@ -368,6 +427,23 @@
             padding: 0px;
             gap: 28px;
         }
+
+        .controls__right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .dotted {
+            font-size: 0;
+        }
+
+        .dotted::before {
+            content: '';
+            display: inline-block;
+            width: 23px;
+            border-bottom: 3px dotted;
+        }
     </style>
 </head>
 
@@ -413,16 +489,40 @@
                     </button>
                 </div>
                 <div class="controls__center">
-                    <span class="button__text">press</span>
-                    <button class="button">
-                        <span class="button__text">our road map</span>
+                    <span class="text button__text">press</span>
+                    <button class="button button_switch">
+                        <span class="button__text">Space bar</span>
                     </button>
-                    <span class="button__text">to switch</span>
+                    <span class="text button__text">to switch</span>
                 </div>
-                <div class="controls__right"></div>
+                <div class="controls__right">
+                    <button class="text-button" type="button">
+                        <span>Cryptosaurs Index</span>
+                        <span class="dotted"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        const themes = {
+            'dark': 'light',
+            'light': 'dark'
+        };
+        let currentTheme = 'dark';
+
+        function switchTheme() {
+            currentTheme = themes[currentTheme];
+            document.body.className = `theme_${currentTheme}`;
+        }
+        window.addEventListener('keydown', (e) => {
+            if (e.code === "Space") {
+                e.preventDefault();
+                switchTheme();
+            }
+        });
+        document.querySelector('.button_switch').addEventListener('click', switchTheme)
+    </script>
     <script type="module">
         import {
             Scene, PerspectiveCamera, WebGLRenderer, Box3, Vector3, MeshStandardMaterial,
