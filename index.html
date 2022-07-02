@@ -276,6 +276,12 @@
             height: 10px;
         }
 
+        .icon_fingerprint::before {
+            background-image: url('./images/finger-print.svg');
+            width: 20px;
+            height: 20px;
+        }
+
         .button_transparent {
             background: rgba(217, 217, 217, 0.01);
             /* button black glass */
@@ -860,9 +866,9 @@
                     <span class="text button__text">to switch</span>
                 </div>
                 <div class="controls__right">
-                    <button class="button text-button" type="button">
-                        <span>Cryptosaurs Index</span>
-                        <span class="dotted"></span>
+                    <button class="button-fingerprint button button_with-icon button_transparent">
+                        <span class="button__text">Cryptosaurs Index</span>
+                        <i class="button__icon icon icon_fingerprint"></i>
                     </button>
                 </div>
             </div>
