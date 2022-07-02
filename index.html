@@ -188,6 +188,10 @@
             width: 100%;
             bottom: 45px;
             margin-bottom: 45px;
+            transition: opacity cubic-bezier(0.075, 0.82, 0.165, 1) .2s;
+        }
+        .controls_hidden {
+            opacity: 0;
         }
 
         .button {
@@ -1242,6 +1246,17 @@
                 snapOnRelease: true,
             },
         });
+    </script>
+    <script>
+        const slider = document.querySelector('.slider');
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                document.querySelector('.controls').classList.toggle('controls_hidden', e.isIntersecting);
+            })
+        }, {
+            threshold: 0.3
+        });
+        observer.observe(slider);
     </script>
 </body>
 
