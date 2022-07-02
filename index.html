@@ -46,7 +46,7 @@
 
         .content {
             height: 8936px;
-            background-image: url('./images/jeremy-bishop-rqWoB4LFgmc-unsplash 2.jpg');
+            background-image: url('./images/jeremy-bishop-rqWoB4LFgmc-unsplash 2.png');
             background-repeat: no-repeat;
             background-position: center bottom;
             background-size: cover;
@@ -67,17 +67,20 @@
         }
 
         .header {
-            color: white;
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 210px;
-            font-weight: 400;
-            line-height: 210px;
-            letter-spacing: -12px;
             text-align: center;
             position: relative;
             margin-bottom: 70px;
             margin-top: 52px;
             mix-blend-mode: exclusion;
+        }
+
+        .header text {
+            fill: white;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 210px;
+            font-weight: 400;
+            line-height: 210px;
+            letter-spacing: -12px;
         }
 
         .header::after {
@@ -485,14 +488,13 @@
             transform: translateX(-100%);
             padding: 50px;
             transition: transform .3s ease-in-out;
-            transition-delay: .5s;
         }
 
         .opened-sidebar {
             display: block;
         }
 
-        .opened-sidebar .sidebar__content {
+        .opened-sidebar .sidebar__content.show {
             transform: translateX(0);
         }
 
@@ -858,7 +860,11 @@
 
                 </div>
             </div>
-            <h1 class="header">CRYPTOSAURS</h1>
+            <h1 class="header">
+                <svg viewBox="0 0 1630 210" xmlns="http://www.w3.org/2000/svg">
+                    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">CRYPTOSAURS</text>
+                </svg>
+            </h1>
             <div class="sub-header">
                 <span class="link" style="flex-basis: 30%;">Dive into metaverse with our fashion avatar</span>
                 <span class="link" style="flex-basis: 24%;">Visit partner's website: OPensea</span>
@@ -1077,18 +1083,30 @@
             isOpenSidebar = true;
             document.querySelector('.sidebar').classList.add('opened-sidebar');
             document.body.classList.add('no-scroll');
+            setTimeout(() => {
+                document.querySelector('.sidebar__content').classList.add('show');
+            })
         });
 
         document.querySelector('.button-close-roadmap').addEventListener('click', () => {
             isOpenSidebar = false;
-            document.querySelector('.sidebar').classList.toggle('opened-sidebar', isOpenSidebar);
-            document.body.classList.remove('no-scroll');
+            document.querySelector('.sidebar__content').classList.remove('show');
+            document.querySelector('.sidebar__content').addEventListener('transitionend', function onTransitionEnd() {
+                document.querySelector('.sidebar').classList.toggle('opened-sidebar', isOpenSidebar);
+                document.body.classList.remove('no-scroll');
+                document.querySelector('.sidebar__content').removeEventListener('transitionend', onTransitionEnd);
+            });
         });
         document.querySelector('.sidebar').addEventListener('click', (e) => {
             if (!e.target.closest('.sidebar__content')) {
                 isOpenSidebar = false;
-                document.querySelector('.sidebar').classList.remove('opened-sidebar');
-                document.body.classList.remove('no-scroll');
+                document.querySelector('.sidebar__content').classList.remove('show');
+                document.querySelector('.sidebar__content').addEventListener('transitionend', function onTransitionEnd() {
+                    document.querySelector('.sidebar').classList.toggle('opened-sidebar', isOpenSidebar);
+                    document.body.classList.remove('no-scroll');
+                    document.querySelector('.sidebar__content').removeEventListener('transitionend', onTransitionEnd);
+                })
+
             }
         })
     </script>
