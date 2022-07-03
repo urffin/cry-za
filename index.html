@@ -180,6 +180,7 @@
             flex-grow: 1;
             margin-left: 56px;
             margin-right: 56px;
+            overflow-x: hidden;
         }
 
         .controls {
@@ -192,6 +193,7 @@
             margin-bottom: 45px;
             transition: opacity ease-in-out .3s;
         }
+
         .controls_hidden {
             opacity: 0;
         }
@@ -849,9 +851,9 @@
 
 <body class="theme_dark">
     <div class="loading"></div>
-    <div class="container-3d"></div>
     <div class="content">
         <div class="layout">
+            <div class="container-3d"></div>
             <div class="top-bar">
                 <div class="top-bar__left">
                     <button class="button button_with-icon button_transparent">
@@ -1250,11 +1252,31 @@
             },
         });
     </script>
-    <script>
+    <script type="module">
         const slider = document.querySelector('.slider');
-        const observer = new IntersectionObserver((entries)=>{
-            entries.forEach(e=>{
+        let stopModel = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
                 document.querySelector('.controls').classList.toggle('controls_hidden', e.isIntersecting);
+                const model = document.querySelector('.container-3d canvas');
+                console.log(e)
+                if (e.isIntersecting && !stopModel) {
+                    model.parentElement.style.overflow = 'hidden';
+                    model.style.position = 'absolute';
+                    model.style.bottom = `${e.target.parentElement.offsetHeight - e.target.offsetTop - 100}px`;
+                    model.style.top = 'unset';
+                    model.style.left = `-${56-15}px`;
+                    stopModel = true;
+                }
+
+                if (!e.isIntersecting && stopModel) {
+                    model.style.position = '';
+                    model.style.bottom = ``;
+                    model.style.top = '';
+                    model.style.left = '';
+                    stopModel = false;
+
+                }
             })
         }, {
             threshold: 0.3
