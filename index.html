@@ -1147,6 +1147,7 @@
                 pmremGenerator.compileEquirectangularShader();
 
                 var envMap = pmremGenerator.fromEquirectangular(texture).texture;
+                console.log(envMap, renderer.toneMappingExposure)
 
                 // scene.background = envMap;
                 scene.environment = envMap;
@@ -1154,7 +1155,7 @@
                 texture.dispose();
                 pmremGenerator.dispose();
 
-                loader.load('./gl/camera test.glb', function (gltf) {
+                loader.load('./gl/camera test 2.glb', function (gltf) {
                     console.log('loaded', gltf)
                     obj.push(gltf.scene);
                     loading.remove();
@@ -1167,8 +1168,6 @@
                     [animations.camera, animations.walk] = gltf.animations;
                     const globalMixer = new AnimationMixer(gltf.scene);
                     // globalMixer.clipAction(animations.walk).play()
-
-                    // globalMixer.clipAction(animations["1"]).play();
 
                     const cameraMixer = new AnimationMixer(gltf.scene);
                     cameraMixer.clipAction(animations.camera).play();
