@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <title>Title Cry-ZA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .content {
+            background-image: url("./images/saurs-fon 1.png");
+            background-position: center top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .layout {
+            margin: 56px;
+            flex-grow: 1;
+        }
+
+        .button:hover {
+            cursor: pointer;
+        }
+
+        .button {
+            background: none;
+            border: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        .button_transparent {
+            background: rgba(217, 217, 217, 0.01);
+            /* button black glass */
+
+            box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25), inset 2px -1px 4px -3px rgba(255, 255, 255, 0.21), inset 1px 1px 2px rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(4px);
+            /* Note: backdrop-filter has minimal browser support */
+
+            border-radius: 57px;
+        }
+
+        .button_transparent .button__icon {
+            background-color: black;
+        }
+
+        .button_transparent .button__icon::before {
+            background-position-y: 100%;
+        }
+
+        .button_transparent:hover {
+            box-shadow: none;
+            backdrop-filter: none;
+            /* Note: backdrop-filter has minimal browser support */
+        }
+    </style>
+</head>
+
+<body class="theme_dark">
+    <div class="content">
+        <div class="layout">
+            <div class="header">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
