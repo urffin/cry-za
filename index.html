@@ -255,7 +255,6 @@
             padding-right: 56px;
             max-width: 1728px;
             box-sizing: border-box;
-            overflow-x: hidden;
         }
 
         .controls {
@@ -605,7 +604,7 @@
             backdrop-filter: blur(8px);
             /* Note: backdrop-filter has minimal browser support */
             transform: translateX(-100%);
-            padding: 50px;
+            padding: 48px 56px;
             transition: transform .3s ease-in-out;
         }
 
@@ -661,6 +660,7 @@
         .roadmap {
             list-style: none;
             padding-left: 0;
+            margin-top: 66px;
         }
 
         .roadmap__item {
@@ -678,9 +678,14 @@
             border-left-color: white;
         }
 
-        .roadmap__item_first {
-            padding-bottom: 33px;
+        .roadmap__item_last {
+            border-image: linear-gradient(to bottom, #000, #000 calc(50% - 23px), rgba(0,0,0,0) calc(50% - 56px), rgba(0,0,0,0)) 1;
         }
+        
+        .roadmap__item_first {
+            padding-bottom: 56px;
+        }
+
 
         .roadmap__item_first::before {
             content: '';
@@ -732,6 +737,13 @@
             background-color: white;
         }
 
+        .roadmap__item-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-self: flex-start;
+        }
+
         .roadmap__item-description {
             font-family: 'Helvetica';
             font-style: normal;
@@ -753,7 +765,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            padding: 0px;
+            padding: 0px 0px 56px;
             gap: 40px;
         }
 
@@ -777,15 +789,16 @@
         }
 
         .roadmap__item-title {
-            font-family: 'Neue Plak';
+            font-family: 'Archivo Black';
             font-style: normal;
             font-weight: 400;
-            font-size: 14px;
-            line-height: 40px;
-            /* or 282% */
+            font-size: 20px;
+            line-height: 30px;
+            /* or 150% */
 
             display: flex;
             align-items: center;
+            letter-spacing: 0.4px;
             text-transform: uppercase;
         }
 
@@ -824,7 +837,8 @@
         }
 
         .swiper {
-            width: 1728px;  /*calc(100vw - 100px);*/
+            width: 1728px;
+            /*calc(100vw - 100px);*/
             height: 280px;
             /* plane */
 
@@ -923,7 +937,7 @@
             align-items: center;
         }
 
-        .info__contacts > .footer__link:last-child{
+        .info__contacts>.footer__link:last-child {
             white-space: nowrap;
         }
 
@@ -1055,6 +1069,11 @@
             top: calc(100vh - 185px);
             justify-content: center;
             left: 0;
+        }
+
+        .roadmap-coming-soon {
+            align-items: center;
+            align-self: center;
         }
     </style>
 </head>
@@ -1205,89 +1224,117 @@
                         <span class="roadmap__header">Become a crypto enthusiast be part of the community</span>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">1. date tba - MINT</div>
                         <div class="roadmap__item-content">
                             <div class="roadmap__item-image"><img src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description">After several millenia, dinosaurs return to the meta
-                                universe in a new NFT collection CRYPTOSAURS.
-                                10,000 unique cryptodinosaurs will unite a worldwide community of Influencers and
-                                entrepreneurs.
-                                (?дата минта?) Cryptosaurs are about to hatch from eggs and begin new era in Metaverse.
-                                From
-                                first steps it’s provided with strong support of biggest artists and influencers. A part
-                                of
-                                collection designed for them with partnership.
+                            <div class="roadmap__item-text">
+                                <div class="roadmap__item-title ">1. date tba - MINT</div>
+                                <div class="roadmap__item-description">After several millenia, dinosaurs return to the
+                                    meta
+                                    universe in a new NFT collection CRYPTOSAURS.
+                                    10,000 unique cryptodinosaurs will unite a worldwide community of Influencers and
+                                    entrepreneurs.
+                                    (?дата минта?) Cryptosaurs are about to hatch from eggs and begin new era in
+                                    Metaverse.
+                                    From
+                                    first steps it’s provided with strong support of biggest artists and influencers. A
+                                    part
+                                    of
+                                    collection designed for them with partnership.
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">2. Watch to earn</div>
                         <div class="roadmap__item-content">
                             <div class="roadmap__item-image"><img src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description">Watch your favourite streams with customised “NFT
-                                Glasses” and get coins! We’ve got partnerships with big stream communities and strong
-                                software.
+                            <div class="roadmap__item-text">
+                                <div class="roadmap__item-title">2. Watch to earn</div>
+                                <div class="roadmap__item-description">Watch your favourite streams with customised “NFT
+                                    Glasses” and get coins! We’ve got partnerships with big stream communities and
+                                    strong
+                                    software.
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">3. Move to earn</div>
                         <div class="roadmap__item-content">
                             <div class="roadmap__item-image"><img src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description">
-                                Get special NFT sneakers and you know what to do. move!
+                            <div class="roadmap__item-text">
+                                <div class="roadmap__item-title">3. Move to earn</div>
+                                <div class="roadmap__item-description">
+                                    Get special NFT sneakers and you know what to do. move!
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">4. Merch</div>
                         <div class="roadmap__item-content">
                             <div class="roadmap__item-image"><img src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description">All NFT owners can get customised sneakers and top
-                                clothes, which designed as good as card is.
+                            <div class="roadmap__item-text">
+                                <div class="roadmap__item-title">4. Merch</div>
+                                <div class="roadmap__item-description">All NFT owners can get customised sneakers and
+                                    top
+                                    clothes, which designed as good as card is.
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">5. Offline benefits</div>
                         <div class="roadmap__item-content">
                             <div class="roadmap__item-image"><img src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description">Cryptosaurs NFT owners already in closed community
-                                with
-                                benefits. In our resources we share freshest inside news about crypto industry,
-                                community
-                                members always keeps in touch.
-                                Besides online activities we run offline even: Cryptosaurs team invites card owners to
-                                join
-                                expedition group to Everest. Or conference in Dubai, with famous speakers and big party.
+                            <div class="roadmap__item-text">
+                                <div class="roadmap__item-title">5. Offline benefits</div>
+                                <div class="roadmap__item-description">Cryptosaurs NFT owners already in closed
+                                    community
+                                    with
+                                    benefits. In our resources we share freshest inside news about crypto industry,
+                                    community
+                                    members always keeps in touch.
+                                    Besides online activities we run offline even: Cryptosaurs team invites card owners
+                                    to
+                                    join
+                                    expedition group to Everest. Or conference in Dubai, with famous speakers and big
+                                    party.
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">6. Metaverse </div>
                         <div class="roadmap__item-content">
                             <div class="roadmap__item-image"><img src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description">Have you ever played GTA? I bet you enjoyed reaching
-                                goals, getting money, spending it, completing missions, buying houses, skins etc. In
-                                Cryptosaurs metaverse you can do of those things, but with concerts of famous artists,
-                                insane events and a lot of Easter eggs.
+                            <div class="roadmap__item-text">
+                                <div class="roadmap__item-title">6. Metaverse </div>
+                                <div class="roadmap__item-description">Have you ever played GTA? I bet you enjoyed
+                                    reaching
+                                    goals, getting money, spending it, completing missions, buying houses, skins etc. In
+                                    Cryptosaurs metaverse you can do of those things, but with concerts of famous
+                                    artists,
+                                    insane events and a lot of Easter eggs.
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="roadmap__item">
-                        <div class="roadmap__item-title">Coming soon</div>
                         <div class="roadmap__item-content">
-                            <div class="roadmap__item-image" style="filter: grayscale(1);"><img
-                                    src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description"></div>
+                            <div class="roadmap__item-image" style="filter: grayscale(1);">
+                                <img src="./images/roadmap-mock.png" />
+                            </div>
+                            <div class="roadmap__item-text roadmap-coming-soon">
+                                <div class="roadmap__item-title">Coming soon</div>
+                                <div class="roadmap__item-description"></div>
+                            </div>
                         </div>
                     </li>
-                    <li class="roadmap__item">
-                        <div class="roadmap__item-title">Coming soon</div>
+                    <li class="roadmap__item roadmap__item_last">
                         <div class="roadmap__item-content">
-                            <div class="roadmap__item-image" style="filter: grayscale(1);"><img
-                                    src="./images/roadmap-mock.png" /></div>
-                            <div class="roadmap__item-description"></div>
+                            <div class="roadmap__item-image" style="filter: grayscale(1);">
+                                <img src="./images/roadmap-mock.png" />
+                            </div>
+                            <div class="roadmap__item-text roadmap-coming-soon">
+                                <div class="roadmap__item-title">Coming soon</div>
+                                <div class="roadmap__item-description"></div>
+                            </div>
                         </div>
                     </li>
                 </ul>
