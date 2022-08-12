@@ -283,13 +283,14 @@
         .egg:not(:hover)::after {
             content: '';
             position: absolute;
-            left:0;
-            right:0;
+            left: 0;
+            right: 0;
             top: 0;
             bottom: 0;
             background-color: #2B2B2B;
             opacity: .2;
         }
+
         .egg-type {
             font-family: 'Helvetica';
             font-style: normal;
@@ -410,19 +411,19 @@
                         <h2 class="h2 normal">time to reveal: </h2>
                         <div class="countdown">
                             <div class="countdown-item">
-                                <div class="countdown-item__value bold">1</div>
+                                <div id="days" class="countdown-item__value bold"></div>
                                 <div class="countdown-item__title normal">Days</div>
                             </div>
                             <div class="countdown-item">
-                                <div class="countdown-item__value bold">2</div>
+                                <div id="hours" class="countdown-item__value bold"></div>
                                 <div class="countdown-item__title normal">Hours</div>
                             </div>
                             <div class="countdown-item">
-                                <div class="countdown-item__value bold">3</div>
+                                <div id="minutes" class="countdown-item__value bold"></div>
                                 <div class="countdown-item__title normal">Minutes</div>
                             </div>
                             <div class="countdown-item">
-                                <div class="countdown-item__value bold">4</div>
+                                <div id="seconds" class="countdown-item__value bold"></div>
                                 <div class="countdown-item__title normal">Seconds</div>
                             </div>
                         </div>
@@ -515,6 +516,39 @@
             </div>
         </div>
     </div>
+    <script>
+        const date = new Date('2022-08-12T18:18:00+03:00');
+        const [days, hours, minutes, seconds] = [
+            document.getElementById('days'),
+            document.getElementById('hours'),
+            document.getElementById('minutes'),
+            document.getElementById('seconds'),
+        ];
+        function getParts (diff) {
+            diff = Math.trunc(diff / 1000);
+            const sec = diff % 60;
+            diff = (diff - sec) / 60
+            const min = diff % 60;
+            diff = (diff - min) / 60;
+            const hour = diff % 24;
+            const days = (diff - hour) / 24;
+            return [days, hour, min, sec];
+        }
+        function calc () {
+            const diff = date - Date.now();
+            if (diff <= 0) clearInterval(timer)
+
+            const [d, h, m, s] = getParts(diff);
+
+            days.innerHTML = d.toString().padStart(2, '0');
+            hours.innerHTML = h.toString().padStart(2, '0');
+            minutes.innerHTML = m.toString().padStart(2, '0');
+            seconds.innerHTML = s.toString().padStart(2, '0');
+        }
+        const timer = setInterval(calc, 1000)
+        calc();
+
+    </script>
 </body>
 
 </html>
