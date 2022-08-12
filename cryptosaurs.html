@@ -24,7 +24,7 @@
 
         .content {
             background-image: url("./images/bg-3.png"), url("./images/bg-2.png"), url("./images/saurs-fon 1.png");
-            background-position: center 130px, center top, center top;
+            background-position: center 130px, center top, center bottom;
             background-repeat: no-repeat;
             min-height: 100vh;
             display: flex;
@@ -386,6 +386,85 @@
             text-align: center;
             text-transform: capitalize;
         }
+
+        .footer {
+            margin-top: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            color: #FFFFFF;
+        }
+
+        .copyright {
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 21px;
+            /* identical to box height, or 175% */
+
+            letter-spacing: 4.64px;
+            text-transform: uppercase;
+        }
+
+        .footer-info {
+            width: 490px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-info__contacts {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .footer-info__contacts>.footer__link:last-child {
+            white-space: nowrap;
+        }
+
+        .footer-info__links {
+            display: flex;
+            justify-content: space-between;
+            letter-spacing: 4.64px;
+            margin-top: 56px;
+            text-transform: uppercase;
+        }
+
+        .footer__link {
+            text-decoration: none;
+
+            font-family: 'Helvetica';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 21px;
+            /* identical to box height, or 175% */
+
+            color: #FFFFFF;
+        }
+
+        .connect {
+            font-family: 'Archivo Black';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 30px;
+            /* or 150% */
+
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        .footer-info__contact {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            gap: 15px
+        }
     </style>
 </head>
 
@@ -514,10 +593,27 @@
                     </div>
                 </div>
             </div>
+            <div class="footer">
+                <div class="copyright footer__text">&copy; 2022 • Cryptosaurs</div>
+                <div class="footer-info">
+                    <div class="footer-info__contacts">
+                        <a href="#" class="footer__link connect">Connect with<br>us</a>
+                        <div class="footer-info__contact">
+                            <a href="#" class="footer__link">Our Discord</a>
+                            <a href="#" class="footer__link">View on OpenSea</a>
+                        </div>
+                        <a href="#" class="footer__link">Cryptosaurs Index</a>
+                    </div>
+                    <div class="footer-info__links">
+                        <a href="#" class="footer__link">Terms & Conditions</a>
+                        <a href="#" class="footer__link">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
-        const date = new Date('2022-08-12T18:18:00+03:00');
+        const date = new Date('2022-08-25T18:18:00+03:00');
         const [days, hours, minutes, seconds] = [
             document.getElementById('days'),
             document.getElementById('hours'),
@@ -532,7 +628,7 @@
             diff = (diff - min) / 60;
             const hour = diff % 24;
             const days = (diff - hour) / 24;
-            return [days, hour, min, sec];
+            return [Math.max(days, 0), Math.max(hour, 0), Math.max(min, 0), Math.max(sec, 0)];
         }
         function calc () {
             const diff = date - Date.now();
