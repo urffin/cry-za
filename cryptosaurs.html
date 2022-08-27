@@ -256,6 +256,7 @@
             display: flex;
             gap: 20px;
             margin-bottom: 48px;
+            justify-content: center;
         }
 
         .egg {
@@ -465,6 +466,193 @@
             white-space: nowrap;
             gap: 15px
         }
+
+        @media (min-width: 1142px) {
+            .hide-desk {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1141px) {
+            .content {
+                background-image: url("./images/bg-3-mob.png"), url("./images/bg-2-mob.png");
+                background-position: center top, center bottom;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .layout {
+                padding: 24px;
+            }
+
+            .title {
+                position: relative;
+                left: -5px;
+            }
+
+            .subtitle {
+                margin-top: 24px;
+                margin-bottom: 12px;
+            }
+
+            .subtitle-text {
+                font-size: 12px;
+                line-height: 20px;
+            }
+
+            .h1 {
+                font-size: 50px;
+            }
+
+            .h2 {
+                font-size: 32px;
+            }
+
+            .timer {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 533px;
+
+                width: 380px;
+                height: 166px;
+            }
+
+            .timer .h2 {
+                font-size: 20px;
+            }
+
+            .countdown-item__value {
+                line-height: 37px;
+            }
+
+            .description {
+                margin-top: 500px;
+                padding: 24px;
+                border-radius: 20px;
+            }
+
+            .description.hide-desk {
+                margin-top: 56px;
+                padding: 48px 0 24px;
+            }
+
+            .description.hide-desk .info-title {
+                font-size: 28px;
+                margin-bottom: 24px;
+            }
+
+            .description.hide-desk .info-text {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            .description.hide-desk .info-text p {
+                margin-bottom: 28px;
+            }
+
+            .description.hide-desk .info-text p:last-child {
+                margin-bottom: 48px;
+            }
+
+            .eggs {
+                flex-wrap: wrap;
+                gap: 24px;
+                margin-bottom: 0;
+            }
+
+            .egg {
+                height: 208px;
+
+                flex-basis: 30%;
+            }
+
+            .hide-mob {
+                display: none;
+            }
+
+            .info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-image {
+                object-fit: cover;
+                height: 334px;
+                width: 560px;
+            }
+
+            .search-wrap {
+                display: none;
+            }
+            .footer.hide-desk {
+                margin-top: 72px;
+            }
+            .footer.hide-desk .footer-info {
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+            }
+            .footer.hide-desk .footer-info__contacts {
+                flex-direction: column;
+                gap: 0;
+                align-items: center;
+            }
+            .footer.hide-desk .connect{
+                margin-bottom: 24px;
+            }
+            .footer.hide-desk .copyright {
+                margin-top: 72px;
+                font-size: 10px;
+                margin-bottom: 96px;
+            }
+            .footer.hide-desk .item {
+                font-size: 14px;
+                line-height: 40px;
+                color: #8E8E8E;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .content {
+                background-image: url("./images/bg-3-mob.png"), url("./images/bg-2-mob-small.png");
+            }
+            .description {
+                margin-top: 479px;
+                padding: 12px;
+            }
+
+            .eggs {
+                gap: 12px;
+            }
+
+            .egg {
+                height: 172px;
+
+                flex-basis: 48%;
+
+            }
+
+            .info-image {
+                height: 195px;
+                width: 327px;
+            }
+
+            .description.hide-desk .info-title {
+                font-size: 20px;
+                margin-bottom: 48px;
+            }
+
+            .description.hide-desk .info-text {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            .footer.hide-desk .copyright {
+                margin-bottom: 72px;
+            }
+            .description.hide-desk .info-text p {
+                margin-bottom: 27px;
+            }
+        }
     </style>
 </head>
 
@@ -560,7 +748,7 @@
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
                 </div>
-                <div class="info">
+                <div class="info hide-mob">
                     <div class="info-left">
                         <h2 class="info-title normal">description</h2>
                         <div class="info-text">
@@ -593,7 +781,37 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
+            <div class="description hide-desk">
+                <div class="info">
+                    <h2 class="info-title normal">description</h2>
+                    <div class="info-text">
+                        <p>
+                            Hatching prehistoric cryptosaur's egg gives owner a unique avatar in metaverse.
+                        </p>
+                        <p>
+                            Collection’s concept is production and creation of digital content in metaverse
+                            involving world and CIS famous influencers, which is a core competency of our
+                            team.
+                        </p>
+                        <p>
+                            According to roadmap in metaverse we about to create "Ice Age" plots of land and
+                            houses, where will the digital activities take place.
+                        </p>
+                        <p>
+                            Within collection you can get "play to earn" game based on jumping dinosaur in
+                            Google to mine in-game tokens and spend it on multiply benifits.
+                        </p>
+                        <p>
+                            Afterall, according to offline events: upcoming 4 expeditions in different
+                            countries,
+                            where bloggers, entrepreneurs, NFT collectors and enthusiasts will face challenges
+                            in real life!
+                        </p>
+                    </div>
+                    <img class="info-image" src="./images/mock-zaur-mob.jfif" />
+                </div>
+            </div>
+            <div class="footer hide-mob">
                 <div class="copyright footer__text">&copy; 2022 • Cryptosaurs</div>
                 <div class="footer-info">
                     <div class="footer-info__contacts">
@@ -610,10 +828,23 @@
                     </div>
                 </div>
             </div>
+            <div class="footer hide-desk">
+                <div class="footer-info">
+                    <div class="footer-info__contacts">
+                        <a href="#" class="footer__link connect">Connect with us</a>
+                        <a href="#" class="footer__link item">Our Discord</a>
+                        <a href="#" class="footer__link item">View on OpenSea</a>
+                        <a href="#" class="footer__link item">Rarity Sniper</a>
+                        <a href="#" class="footer__link item">Crypto Fashion Index</a>
+                        <div class="copyright footer__text">&copy; 2022 • Cryptosaurs</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <script>
-        const date = new Date('2022-08-25T18:18:00+03:00');
+        const date = new Date('2022-09-25T18:18:00+03:00');
         const [days, hours, minutes, seconds] = [
             document.getElementById('days'),
             document.getElementById('hours'),
