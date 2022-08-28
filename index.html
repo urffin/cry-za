@@ -159,6 +159,10 @@
             color: white;
         }
 
+        .header img {
+            width: 100%;
+        }
+
         .header text {
             fill: white;
         }
@@ -837,8 +841,9 @@
         }
 
         .swiper {
-            width: 1728px;
+            /* width: 1728px; */
             /*calc(100vw - 100px);*/
+            width: 100%;
             height: 280px;
             /* plane */
 
@@ -1115,7 +1120,7 @@
                 </div>
             </div>
             <h1 class="header h1">
-                CRYPTOSAURS
+                <img src="./images/CRYPTOSAURS.svg" />
             </h1>
             <div class="sub-header">
                 <span class="link h3" style="flex-basis: 30%;">Dive into metaverse with our fashion avatar</span>
@@ -1154,62 +1159,62 @@
                 <div class="controls__right">
                 </div>
             </div>
-            <div class="slider">
-                <h2 class="slider__title">OUR partners</h2>
-                <!-- Slider main container -->
-                <div class="swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides -->
-                        <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
-                        <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
-                        <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
-                        <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slide-coming-soon">coming soon</div>
-                        </div>
+        </div>
+        <div class="slider">
+            <h2 class="slider__title">OUR partners</h2>
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
+                    <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
+                    <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
+                    <div class="swiper-slide"><img src="./images/slider-mock.png" /></div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
                     </div>
-
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar"></div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-coming-soon">coming soon</div>
+                    </div>
                 </div>
+
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
             </div>
-            <div class="footer">
-                <div class="copyright footer__text">&copy; 2022 • Cryptosaurs</div>
-                <div class="info">
-                    <div class="info__contacts">
-                        <a href="#" class="footer__link connect">Connect with<br>us</a>
-                        <div class="info__contact">
-                            <a href="#" class="footer__link">Our Discord</a>
-                            <a href="#" class="footer__link">View on OpenSea</a>
-                        </div>
-                        <a href="#" class="footer__link">Cryptosaurs Index</a>
+        </div>
+        <div class="footer">
+            <div class="copyright footer__text">&copy; 2022 • Cryptosaurs</div>
+            <div class="info">
+                <div class="info__contacts">
+                    <a href="#" class="footer__link connect">Connect with<br>us</a>
+                    <div class="info__contact">
+                        <a href="#" class="footer__link">Our Discord</a>
+                        <a href="#" class="footer__link">View on OpenSea</a>
                     </div>
-                    <div class="info__links">
-                        <a href="#" class="footer__link">Terms & Conditions</a>
-                        <a href="#" class="footer__link">Privacy Policy</a>
-                    </div>
+                    <a href="#" class="footer__link">Cryptosaurs Index</a>
+                </div>
+                <div class="info__links">
+                    <a href="#" class="footer__link">Terms & Conditions</a>
+                    <a href="#" class="footer__link">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -1354,13 +1359,6 @@
             currentTheme = themes[currentTheme];
             document.body.className = `theme_${currentTheme}`;
         }
-        // window.addEventListener('keydown', (e) => {
-        //     if (e.code === "Space") {
-        //         e.preventDefault();
-        //         switchTheme();
-        //     }
-        // });
-        // document.querySelector('.button_switch').addEventListener('click', switchTheme)
     </script>
     <script>
         let isOpenSidebar = false;
@@ -1430,7 +1428,6 @@
                 pmremGenerator.compileEquirectangularShader();
 
                 var envMap = pmremGenerator.fromEquirectangular(texture).texture;
-                console.log(envMap, renderer.toneMappingExposure)
 
                 // scene.background = envMap;
                 scene.environment = envMap;
@@ -1441,6 +1438,7 @@
                 loader.load('./gl/camera test 3.glb', function (gltf) {
                     console.log('loaded', gltf)
                     obj.push(gltf.scene);
+                    scene.scale.set(.05, .05, .05)
                     loading.remove();
                     [camera] = gltf.cameras;
                     window.cam = camera;
@@ -1485,7 +1483,7 @@
                     // progress
                     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
 
-                    loading.innerHTML = `${(xhr.loaded / xhr.total * 100).toFixed(2)}% loaded`;
+                    loading.innerHTML = `${Math.min((xhr.loaded / xhr.total * 100), 100).toFixed(2)}% loaded`;
                 }, function (error) {
                     console.error(error);
                     var pre = document.querySelector('.error');
