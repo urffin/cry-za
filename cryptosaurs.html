@@ -281,6 +281,10 @@
             position: relative;
         }
 
+        .egg-bg {
+            width: 100%;
+        }
+
         .egg:not(:hover)::after {
             content: '';
             position: absolute;
@@ -477,6 +481,7 @@
             .content {
                 background-image: url("./images/bg-3-mob.png"), url("./images/bg-2-mob.png");
                 background-position: center top, center bottom;
+                background-size: auto, 100% 100%;
                 display: flex;
                 flex-direction: column;
             }
@@ -530,6 +535,9 @@
                 margin-top: 500px;
                 padding: 24px;
                 border-radius: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 816px;
             }
 
             .description.hide-desk {
@@ -546,6 +554,7 @@
                 padding-left: 24px;
                 padding-right: 24px;
             }
+
             .description.hide-desk .info-text p {
                 margin-bottom: 28px;
             }
@@ -555,15 +564,47 @@
             }
 
             .eggs {
-                flex-wrap: wrap;
+                display: grid;
                 gap: 24px;
                 margin-bottom: 0;
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .egg {
-                height: 208px;
+                min-width: 130px;
+                height: 0;
+                padding: 0 0 100% 0;
+                display: block;
+                overflow: hidden;
+            }
 
-                flex-basis: 30%;
+            .egg-type {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+            }
+
+            .egg-info {
+                position: absolute;
+                bottom: 12px;
+                width: 100%;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .egg-quantity,
+            .egg-price {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .egg-quantity {
+                align-items: flex-start;
+            }
+
+            .egg-price {
+                align-items: flex-end;
             }
 
             .hide-mob {
@@ -584,27 +625,33 @@
             .search-wrap {
                 display: none;
             }
+
             .footer.hide-desk {
                 margin-top: 72px;
             }
+
             .footer.hide-desk .footer-info {
                 flex-direction: row;
                 justify-content: center;
                 width: 100%;
             }
+
             .footer.hide-desk .footer-info__contacts {
                 flex-direction: column;
                 gap: 0;
                 align-items: center;
             }
-            .footer.hide-desk .connect{
+
+            .footer.hide-desk .connect {
                 margin-bottom: 24px;
             }
+
             .footer.hide-desk .copyright {
                 margin-top: 72px;
                 font-size: 10px;
                 margin-bottom: 96px;
             }
+
             .footer.hide-desk .item {
                 font-size: 14px;
                 line-height: 40px;
@@ -613,28 +660,30 @@
         }
 
         @media (max-width: 767px) {
-            .content {
-                background-image: url("./images/bg-3-mob.png"), url("./images/bg-2-mob-small.png");
-            }
-            .description {
-                margin-top: 479px;
+            .layout {
                 padding: 12px;
+            }
+
+            .description {
+                margin-top: 491px;
+                padding: 12px;
+                max-width: 516px;
             }
 
             .eggs {
                 gap: 12px;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .egg {
-                height: 172px;
-
-                flex-basis: 48%;
-
+            .info-image-wrap {
+                padding-left: 24px;
+                padding-right: 24px;
             }
 
             .info-image {
-                height: 195px;
-                width: 327px;
+                max-width: 100%;
+                height: auto;
+                aspect-ratio: 248 /141;
             }
 
             .description.hide-desk .info-title {
@@ -642,16 +691,33 @@
                 margin-bottom: 48px;
             }
 
-            .description.hide-desk .info-text {
-                padding-left: 40px;
-                padding-right: 40px;
-            }
             .footer.hide-desk .copyright {
                 margin-bottom: 72px;
             }
+
             .description.hide-desk .info-text p {
                 margin-bottom: 27px;
             }
+
+            .timer {
+                width: auto;
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .countdown-item {
+                gap: 12px;
+            }
+
+            .countdown-item__value {
+                font-size: 30px;
+            }
+
+            .countdown-item__title {
+                line-height: 28px;
+                font-size: 14px;
+            }
+
         }
     </style>
 </head>
@@ -702,48 +768,48 @@
                     <div class="egg">
                         <div class="egg-type legendary">LEGENDARY</div>
                         <div class="egg-info">
-                            <div class="egg-quantity">Quantity: 1</div>
-                            <div class="egg-price">Price: 7500 Sol</div>
+                            <div class="egg-quantity"><span>Quantity:</span><span>1</span></div>
+                            <div class="egg-price"><span>Price:</span><span>7500 Sol</span></div>
                         </div>
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
                     <div class="egg">
                         <div class="egg-type crystallized">Crystallized</div>
                         <div class="egg-info">
-                            <div class="egg-quantity">Quantity: 250</div>
-                            <div class="egg-price">Price: 30 Sol</div>
+                            <div class="egg-quantity"><span>Quantity:</span><span>250</span></div>
+                            <div class="egg-price"><span>Price:</span><span>30 Sol</span></div>
                         </div>
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
                     <div class="egg">
                         <div class="egg-type epic">EPIC</div>
                         <div class="egg-info">
-                            <div class="egg-quantity">Quantity: 500</div>
-                            <div class="egg-price">Price: 15 Sol</div>
+                            <div class="egg-quantity"><span>Quantity:</span><span>500</span></div>
+                            <div class="egg-price"><span>Price:</span><span>15 Sol</span></div>
                         </div>
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
                     <div class="egg">
                         <div class="egg-type rare">RARE</div>
                         <div class="egg-info">
-                            <div class="egg-quantity">Quantity: 1250</div>
-                            <div class="egg-price">Price: 6 Sol</div>
+                            <div class="egg-quantity"><span>Quantity:</span><span>1250</span></div>
+                            <div class="egg-price"><span>Price:</span><span>6 Sol</span></div>
                         </div>
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
                     <div class="egg">
                         <div class="egg-type uncommon">UNCOMMON</div>
                         <div class="egg-info">
-                            <div class="egg-quantity">Quantity: 5000</div>
-                            <div class="egg-price">Price: 3 Sol</div>
+                            <div class="egg-quantity"><span>Quantity:</span><span>5000</span></div>
+                            <div class="egg-price"><span>Price:</span><span>3 Sol</span></div>
                         </div>
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
                     <div class="egg">
                         <div class="egg-type common">COMMON</div>
                         <div class="egg-info">
-                            <div class="egg-quantity">Quantity: 5000</div>
-                            <div class="egg-price">Price: 1.5 Sol</div>
+                            <div class="egg-quantity"><span>Quantity:</span><span>5000</span></div>
+                            <div class="egg-price"><span>Price:</span><span>1.5 Sol</span></div>
                         </div>
                         <div class="egg-buy"><button>BUY NOW</button></div>
                     </div>
@@ -808,7 +874,9 @@
                             in real life!
                         </p>
                     </div>
-                    <img class="info-image" src="./images/mock-zaur-mob.jfif" />
+                    <div class="info-image-wrap">
+                        <img class="info-image" src="./images/mock-zaur-mob.jfif" />
+                    </div>
                 </div>
             </div>
             <div class="footer hide-mob">
