@@ -1135,6 +1135,8 @@
 
             .footer.hide-desk {
                 margin-top: 72px;
+                padding-left: 0;
+                padding-right: 0;
             }
 
             .footer.hide-desk .footer-info {
@@ -1818,8 +1820,10 @@
             entries.forEach(e => {
                 document.querySelector('.controls').classList.toggle('controls_hidden', e.isIntersecting);
                 const model = document.querySelector('.container-3d canvas');
-                console.log(e, e.target.previousElementSibling.offsetHeight, e.target.parentElement.offsetHeight, e.target.offsetTop)
-                if (e.isIntersecting && !stopModel) {
+
+                const isVisible = e.isIntersecting || e.boundingClientRect.top <= 0;
+                console.log(e.boundingClientRect)
+                if ((isVisible && !stopModel)) {
                     model.style.position = 'absolute';
                     model.style.bottom = `${e.target.parentElement.offsetHeight - e.target.offsetTop - (window.innerWidth >= 1142 ? 100 : 65)}px`;
                     model.style.top = 'unset';
@@ -1827,7 +1831,7 @@
                     stopModel = true;
                 }
 
-                if (!e.isIntersecting && stopModel) {
+                if (!isVisible && stopModel) {
                     model.style.position = '';
                     model.style.bottom = ``;
                     model.style.top = '';
